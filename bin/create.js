@@ -1,7 +1,12 @@
 const path = require('path')
+
 const fsExtra = require('fs-extra')
+
 const inquirer = require('inquirer')
+
 const Generator = require('./Generator.js')
+
+const SelectOptions = require('./SeletOptions.js')
 module.exports = async function (name, options) {
   const cwd = process.cwd()
   const targetAir  = path.join(cwd, name)

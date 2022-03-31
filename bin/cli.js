@@ -1,7 +1,6 @@
 #! /usr/bin/env node
 const program = require('commander')
 const chalk = require('chalk')
-const figlet = require('figlet')
 // 配置创建项目的指令
 program
   .command('create <app-name>')
@@ -28,13 +27,6 @@ program
 
 program
   .on('--help', () => {
-    console.log('\r\n' + figlet.textSync('zhurong', {
-      font: 'Ghost',
-      horizontalLayout: 'default',
-      verticalLayout: 'default',
-      width: 80,
-      whitespaceBreak: true
-    }));
     console.log(`\r\nRun ${chalk.cyan(`zr <command> --help`)} for detailed usage of given command\r\n`);
   })
 
