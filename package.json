@@ -1,17 +1,17 @@
 {
-  "name": "zhurong-cli",
+  "name": "tryVue-cli",
   "version": "1.0.0",
   "description": "simple vue cli",
   "main": "index.js",
   "bin": {
-    "zr": "./bin/cli.js"
+    "tryVue": "./bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
-    "name": "T-Roc",
-    "email": "lxp_work@163.com"
+    "name": "W-Y",
+    "email": "wangbotao3318@163.com"
   },
   "license": "MIT",
   "dependencies": {
