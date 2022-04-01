@@ -1,5 +1,5 @@
-const getData = require('./http.js')
-const {OrganizationsName} = require('./config.js')
+const getData = require('./index.js')
+const {OrganizationsName} = require('../config/index.js')
 /**
  * 获取模板列表
  * @returns Promise

@@ -1,4 +1,4 @@
-const { getRepoList } = require('./api.js')
+const { getRepoList } = require('../http/api')
 // 加载动画
 const ora = require('ora')
 

@@ -8,7 +8,7 @@ program
   // -f or --force 为强制创建，如果创建的目录存在则直接覆盖
   .option('-f, --force', 'overwrite target directory if it exist')
   .action((name, options) => {
-    require('../bin/create.js')(name, options)
+    require('../inqiirer/create')(name, options)
   })
 
 // 配置图形化界面指令
@@ -29,6 +29,7 @@ program
   .on('--help', () => {
     console.log(`\r\nRun ${chalk.cyan(`zr <command> --help`)} for detailed usage of given command\r\n`);
   })
-
+  
 // 解析用户执行命令传入参数
 program.parse(process.argv);
+

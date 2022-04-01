@@ -4,9 +4,10 @@ const fsExtra = require('fs-extra')
 
 const inquirer = require('inquirer')
 
-const Generator = require('./Generator.js')
+const Generator = require('../createProject/index')
 
-const SelectOptions = require('./SeletOptions.js')
+const {isOverwriteSelect} = require('./data')
+
 module.exports = async function (name, options) {
   const cwd = process.cwd()
   const targetAir  = path.join(cwd, name)
@@ -16,23 +17,7 @@ module.exports = async function (name, options) {
       await fsExtra.remove(targetAir)
     } else {
       // TODO：询问用户是否确定要覆盖
-      let {action} = await inquirer.prompt([
-        {
-          name: 'action',
-          type: 'list',
-          message: 'Target directory already exists Pick an action:',
-          choices: [
-            {
-              name: 'Overwrite',
-              value: 'overwrite'
-            },
-            {
-              name: 'Cancel',
-              value: false
-            }
-          ]
-        }
-      ])
+      let {action} = await inquirer.prompt(isOverwriteSelect)
       if (!action) {
         return;
       } else if (action === 'overwrite') {
