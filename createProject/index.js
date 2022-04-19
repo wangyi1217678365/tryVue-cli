@@ -12,7 +12,8 @@ const chalk = require('chalk')
 
 const path = require('path')
 
-const figlet = require('figlet')
+const { featureList , vueVersionList } = require('../inqiirer/data')
+// const figlet = require('figlet')
 
 async function wrapLoading (fn, message, ...args) {
   // 使用 ora 初始化，传入提示信息 message
@@ -52,7 +53,7 @@ class Generator {
       name: 'repo',
       type: 'list',
       choices: repos.concat('Manaully select fearures'),
-      message: 'Please choose a template to create project'
+      message: 'Please pick a preset:'
     })
 
     // 3）return 用户选择的名称
@@ -69,12 +70,27 @@ class Generator {
       path.resolve(process.cwd(), this.targetDir)) // 参数2: 创建位置
   }
 
+
+
   // 核心创建逻辑
   async create (){
     const repo = await this.getRepo()
 
     if (repo === 'Manaully select fearures') {
+      const features = await inquirer.prompt({
+        name: 'features',
+        type: 'checkbox',
+        choices: featureList,
+        message: 'Check the features needed for your project:'
+      }) 
+      const { vueVersion } = await inquirer.prompt({
+        name: 'vueVersion',
+        type: 'list',
+        choices: vueVersionList,
+        message: 'Choose a version of Vue.js that you want to start the project with'
+      }) 
 
+      
     } else {
       await this.download(repo)
     }

@@ -17,7 +17,11 @@ module.exports = async function (name, options) {
       await fsExtra.remove(targetAir)
     } else {
       // TODO：询问用户是否确定要覆盖
-      let {action} = await inquirer.prompt(isOverwriteSelect)
+      let {action} = await inquirer.prompt({
+        name: 'action',
+        type: 'list',
+        choices: isOverwriteSelect
+      })
       if (!action) {
         return;
       } else if (action === 'overwrite') {
